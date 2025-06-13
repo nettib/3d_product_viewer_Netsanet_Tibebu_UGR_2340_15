@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Bedroom Viewer</title>
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <div id="container">
+      <canvas id="product-canvas"></canvas>
+
+      <div id="ui-overlay">
+        <div id="header">
+          <h1>3D Bedroom Viewer</h1>
+          <p>Bright Daytime Bedroom Explorer</p>
+        </div>
+
+        <div id="controls">
+          <button id="auto-rotate-toggle">Auto Rotate: ON</button>
+        </div>
+
+        <div id="info-panel" class="hidden">
+          <div id="info-header">
+            <h3 id="part-title">Item Name</h3>
+            <button id="close-info">×</button>
+          </div>
+          <p id="part-description">Item description goes here.</p>
+        </div>
+
+        <div id="instructions">
+          <h3>Controls:</h3>
+          <ul>
+            <li>• Click on bedroom items to learn more</li>
+            <li>• Drag to rotate the view</li>
+            <li>• Scroll to zoom in/out</li>
+            <li>• Toggle auto-rotation with the button</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Load Three.js library using ES6 modules approach -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.158.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.158.0/examples/jsm/"
+        }
+      }
+    </script>
+
+    <script type="module">
+      import * as THREE from "three";
+      import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+
+      // Make THREE globally available
+      window.THREE = THREE;
+      window.OrbitControls = OrbitControls;
+
+      // Signal that THREE is ready
+      window.threeReady = true;
+
+      console.log("THREE.js loaded successfully");
+    </script>
+
+    <!-- Load application scripts -->
+    <script type="module" src="scripts/initScene.js"></script>
+    <script type="module" src="scripts/createProduct.js"></script>
+    <script type="module" src="scripts/addLighting.js"></script>
+    <script type="module" src="scripts/interaction.js"></script>
+    <script type="module" src="scripts/cameraAnimation.js"></script>
+    <script type="module" src="scripts/main.js"></script>
+  </body>
+</html>
